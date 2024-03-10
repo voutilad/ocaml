@@ -749,7 +749,7 @@ let emit_instr env fallthrough i =
         I.ret ()
       end
   | Llabel lbl ->
-      emit_Llabel env fallthrough lbl
+      emit_Llabel env fallthrough lbl; I.endbr64 ();
   | Lbranch lbl ->
       I.jmp (label lbl)
   | Lcondbranch(tst, lbl) ->
@@ -1004,7 +1004,7 @@ let begin_assembly() =
     D.align 16;
     _label (emit_symbol "caml_negf_mask");
     D.qword (Const 0x8000000000000000L);
-    D.qword (Const 0L);
+    D.word (const 0);
     D.align 16;
     _label (emit_symbol "caml_absf_mask");
     D.qword (Const 0x7FFFFFFFFFFFFFFFL);
@@ -1028,7 +1028,7 @@ let end_assembly() =
     | _ -> D.section [".rodata.cst8"] (Some "aM") ["@progbits";"8"]
     end;
     D.align 8;
-    List.iter (fun (cst,lbl) -> emit_float_constant cst lbl) !float_constants
+    List.iter (fun (cst,lbl) -> emit_float_constant cst lbl) !float_constants;
   end;
 
   emit_named_text_section (Compilenv.make_symbol (Some "code_end"));
