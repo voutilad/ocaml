@@ -15459,13 +15459,13 @@ esac
 
 # Disable control flow integrity
 
-case $host in #(
-  *-*-openbsd7.[4-9]|*-*-openbsd[89].*) :
-    oc_ldflags="$oc_ldflags -Wl,-z,nobtcfi"
-     natdynlinkopts="$natdynlinkopts -Wl,-z,nobtcfi" ;; #(
-  *) :
-     ;;
-esac
+#case $host in #(
+#  *-*-openbsd7.[4-9]|*-*-openbsd[89].*) :
+#    oc_ldflags="$oc_ldflags -Wl,-z,nobtcfi"
+#     natdynlinkopts="$natdynlinkopts -Wl,-z,nobtcfi" ;; #(
+#  *) :
+#     ;;
+#esac
 
 
 # Configure native dynlink
@@ -22739,5 +22739,3 @@ if test -n "$ac_unrecognized_opts" && test "$enable_option_checking" != no; then
   { printf "%s\n" "$as_me:${as_lineno-$LINENO}: WARNING: unrecognized options: $ac_unrecognized_opts" >&5
 printf "%s\n" "$as_me: WARNING: unrecognized options: $ac_unrecognized_opts" >&2;}
 fi
-
-

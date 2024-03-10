@@ -1245,10 +1245,10 @@ AS_CASE([$host],
 
 # Disable control flow integrity
 
-AS_CASE([$host],
-  [[*-*-openbsd7.[4-9]|*-*-openbsd[89].*]],
-    [oc_ldflags="$oc_ldflags -Wl,-z,nobtcfi"
-     natdynlinkopts="$natdynlinkopts -Wl,-z,nobtcfi"])
+#AS_CASE([$host],
+#  [[*-*-openbsd7.[4-9]|*-*-openbsd[89].*]],
+#    [oc_ldflags="$oc_ldflags -Wl,-z,nobtcfi"
+#     natdynlinkopts="$natdynlinkopts -Wl,-z,nobtcfi"])
 
 
 # Configure native dynlink
